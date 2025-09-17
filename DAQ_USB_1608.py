@@ -533,9 +533,10 @@ class USB1608FSPLUS(QMainWindow):
                 self.markers.append(linea)
             dx = abs(p2['x'] - p1['x'])
             dy = abs(p2['y'] - p1['y'])
-            texto = (f"P1 (Ch{p1['channel']}): ({p1['x']:.4f}s, {p1['y']:.4f}V)\n"
-                     f"P2 (Ch{p2['channel']}): ({p2['x']:.4f}s, {p2['y']:.4f}V)\n"
-                     f"Δt={dx:.4f}s, ΔV={dy:.4f}V")
+            texto = (f"P1 (Ch{p1['channel']}): ({p1['x']:.6f}s, {p1['y']:.6f}V)\n"
+                     f"P2 (Ch{p2['channel']}): ({p2['x']:.6f}s, {p2['y']:.6f}V)\n"
+                     f"Δt={dx:.6f}s, ΔV={dy:.6f}V\n"
+                     f"Velocity = {float(self.dist.text()) / dx:.6f} m/s")
             anotacion = p1['ax'].annotate(
                 texto, xy=(0.02, 0.98), xycoords='axes fraction',
                 textcoords="offset pixels", xytext=(0, -5),
